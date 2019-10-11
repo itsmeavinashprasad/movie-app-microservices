@@ -10,7 +10,7 @@ services:
             - $HOME/var/lib:/var/lib/mysql
         environment:
             - MYSQL_ROOT_PASSWORD:root
-            - MYSQL_ROOT_HOST=%
+            - MYSQL_ROOT_HOST:%
 
     mongo:
         image: mongo:3.4-xenial
