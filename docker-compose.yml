@@ -1,0 +1,54 @@
+version: '3'
+services:
+    mysql:
+        image: mysql:5.7
+        ports:
+            - 3306:3306
+        network_mode: host
+        container_name: mysql
+        volumes:
+            - $HOME/var/lib:/var/lib/mysql
+        environment:
+            - MYSQL_ROOT_PASSWORD:root
+            - MYSQL_ROOT_HOST=%
+    mongo:
+        image: mongo:3.4-xenial
+        ports:
+            - 27017:27017
+        network_mode: host
+        container_name: mongo
+        volumes:
+            - /usr/src:/data/db
+    eureka:
+        image: eureka-service:1.0
+        network_mode: host
+        container_name: eureka
+    config:
+        image: config-server:1.0
+        network_mode: host
+        container_name: config-server
+    api-gateway:
+        image: api-gateway:1.0
+        ports:
+            - 8080:8080
+        network_mode: host
+        container_name: api-gateway
+        expose:
+            - 8080
+        depends_on:
+            - movie
+            - user
+    movie:
+        image: movie-service:1.0
+        network_mode: host
+        container_name: movie
+        depends_on:
+            - mongo
+            - eureka
+    user:
+        image: user-service:1.0
+        network_mode: host
+        container_name: user
+        depends_on:
+            - mysql
+            - eureka

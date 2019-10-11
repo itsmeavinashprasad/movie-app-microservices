@@ -37,7 +37,7 @@ public class UserController {
         return new ResponseEntity<User>(userService.deleteUser(id), HttpStatus.OK);
     }
 
-    @GetMapping(value = "user")
+    @GetMapping(value = "users")
     public ResponseEntity<?> getAllUser() {
         return new ResponseEntity<List<User>>(userService.getAllUsers(), HttpStatus.OK);
     }
