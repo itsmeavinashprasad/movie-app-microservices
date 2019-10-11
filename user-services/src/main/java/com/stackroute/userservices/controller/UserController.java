@@ -38,7 +38,7 @@ public class UserController {
 
     @GetMapping(value = "user")
     public ResponseEntity<?> getAllUser(){
-        return new ResponseEntity<List<User>>(userService.getAllMovies(), HttpStatus.OK);
+        return new ResponseEntity<List<User>>(userService.getAllUsers(), HttpStatus.OK);
     }
 
     @GetMapping(value = "user/{id}")
