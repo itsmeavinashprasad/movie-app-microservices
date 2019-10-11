@@ -15,7 +15,8 @@ import java.util.List;
 public class UserController {
 
     private UserService userService;
-    public UserController(){
+
+    public UserController() {
 
     }
 
@@ -26,29 +27,29 @@ public class UserController {
 
     @PostMapping(value = "user")
     public ResponseEntity<?> saveUser(@RequestBody User user) throws UserException {
-        System.out.println("saveMovie(): "+ user.toString());
+        System.out.println("saveMovie(): " + user.toString());
         return new ResponseEntity<User>(userService.saveUser(user), HttpStatus.CREATED);
     }
 
     @DeleteMapping(value = "user/{id}")
-    public ResponseEntity<?> deleteUser(@PathVariable int id) throws UserException{
-        System.out.println("deleteUser(): id = "+ id);
+    public ResponseEntity<?> deleteUser(@PathVariable int id) throws UserException {
+        System.out.println("deleteUser(): id = " + id);
         return new ResponseEntity<User>(userService.deleteUser(id), HttpStatus.OK);
     }
 
     @GetMapping(value = "user")
-    public ResponseEntity<?> getAllUser(){
+    public ResponseEntity<?> getAllUser() {
         return new ResponseEntity<List<User>>(userService.getAllUsers(), HttpStatus.OK);
     }
 
     @GetMapping(value = "user/{id}")
-    public ResponseEntity<?> getUserById(@PathVariable int id) throws UserException{
+    public ResponseEntity<?> getUserById(@PathVariable int id) throws UserException {
         return new ResponseEntity<User>(userService.getUser(id), HttpStatus.OK);
     }
 
     @PutMapping(value = "movie")
-    public ResponseEntity<?> updateUser(@RequestBody User user) throws UserException{
-        System.out.println("updateUser(): "+ user.toString());
+    public ResponseEntity<?> updateUser(@RequestBody User user) throws UserException {
+        System.out.println("updateUser(): " + user.toString());
         return new ResponseEntity<User>(userService.updateUser(user), HttpStatus.OK);
     }
 }
