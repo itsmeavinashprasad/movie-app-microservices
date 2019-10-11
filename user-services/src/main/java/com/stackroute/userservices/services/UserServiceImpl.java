@@ -59,8 +59,17 @@ public class UserServiceImpl implements UserService{
         if(user.getName() != null){
             newUser.setName(user.getName());
         }
-        if(user)
-        userRepository.save(newuser);
-        return newuser;
+        if(user.getPassword() != null){
+            newUser.setPassword(user.getPassword());
+        }
+        if(user.getAge() != 0){
+            newUser.setAge(user.getAge());
+        }
+        if(user.getGender() != null){
+            newUser.setGender(user.getGender());
+        }
+
+        userRepository.save(newUser);
+        return newUser;
     }
 }
