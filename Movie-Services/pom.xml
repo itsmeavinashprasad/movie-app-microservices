@@ -117,16 +117,7 @@
             </plugin>
         </plugins>
     </reporting>
-    <distributionManagement>
-        <repository>
-            <id>packagecloud.release</id>
-            <url>packagecloud+https://packagecloud.io/saptarshim/release</url>
-        </repository>
-        <snapshotRepository>
-            <id>packagecloud.snapshot</id>
-            <url>packagecloud+https://packagecloud.io/saptarshim/snapshot</url>
-        </snapshotRepository>
-    </distributionManagement>
+
 </project>
 
 
