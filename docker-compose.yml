@@ -21,10 +21,14 @@ services:
             - /usr/src:/data/db
     eureka:
         image: eureka-service:1.0
+        ports:
+            - 8761:8761
         network_mode: host
         container_name: eureka
     config:
         image: config-server:1.0
+        ports:
+            - 8888:8888
         network_mode: host
         container_name: config-server
     api-gateway:
@@ -38,8 +42,11 @@ services:
         depends_on:
             - movie
             - user
+            - eureka
     movie:
         image: movie-service:1.0
+        ports:
+            - 8098:8098
         network_mode: host
         container_name: movie
         depends_on:
@@ -47,6 +54,8 @@ services:
             - eureka
     user:
         image: user-service:1.0
+        ports:
+            - 9090:9090
         network_mode: host
         container_name: user
         depends_on:
